@@ -42,7 +42,7 @@ public class NIOServer {
 
     public static void handle(SelectionKey selectionKey) throws IOException {
         if(selectionKey.isAcceptable()){
-            System.out.println("有客户端连接事件了");
+            System.out.println("有客户端连接事件发生了");
             //由于此处为对accept感兴趣，只有ServerSocketChannel注册到selector上时是对accept感兴趣，
             //所以这里的channel是ServerSocketChannel
             ServerSocketChannel serverSocketChannel = (ServerSocketChannel) selectionKey.channel();
