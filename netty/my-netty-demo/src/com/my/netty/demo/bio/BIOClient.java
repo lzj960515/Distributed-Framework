@@ -23,5 +23,6 @@ public class BIOClient {
         if (len != -1)
             System.out.println("接收到服务端返回的信息：" + new String(bytes, 0, len));
         socket.close();
+        System.out.println("连接结束");
     }
 }
