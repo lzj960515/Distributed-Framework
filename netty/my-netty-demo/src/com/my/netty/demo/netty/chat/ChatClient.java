@@ -1,7 +1,6 @@
 package com.my.netty.demo.netty.chat;
 
 import com.alibaba.fastjson.JSON;
-import com.my.netty.demo.netty.demo.NettyClientHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -50,6 +49,8 @@ public class ChatClient {
             System.out.println("netty client start");
             //启动客户端去连接服务器端
             ChannelFuture channelFuture = bootstrap.connect("127.0.0.1", 9000).sync();
+
+            //--------以下为业务逻辑代码
             Channel channel = channelFuture.channel();
             Scanner scanner = new Scanner(System.in);
 

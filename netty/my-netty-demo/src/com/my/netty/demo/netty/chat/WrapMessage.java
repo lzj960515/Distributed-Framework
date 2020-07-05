@@ -13,7 +13,7 @@ public class WrapMessage implements Serializable {
     private static final long serialVersionUID = 3165017226845753050L;
 
     /**
-     * 1.注册 2.发送消息
+     * 1.注册 2.群发 3.私聊
      */
     private int type;
 
