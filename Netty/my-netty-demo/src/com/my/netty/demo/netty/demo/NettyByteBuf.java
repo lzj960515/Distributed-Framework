@@ -4,6 +4,8 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.util.CharsetUtil;
 
+import java.nio.ByteBuffer;
+
 public class NettyByteBuf {
     public static void main(String[] args) {
         // 创建byteBuf对象，该对象内部包含一个字节数组byte[10]
@@ -12,11 +14,16 @@ public class NettyByteBuf {
         // 可读取的区域：[readerindex,writerIndex)
         // 可写的区域: [writerIndex,capacity)
         ByteBuf byteBuf = Unpooled.buffer(10);
+
         System.out.println("byteBuf=" + byteBuf);
 
         for (int i = 0; i < 8; i++) {
             byteBuf.writeByte(i);
         }
+
+        System.out.println("byteBuf=" + byteBuf);
+        int i1 = byteBuf.readableBytes();
+
         System.out.println("byteBuf=" + byteBuf);
 
         for (int i = 0; i < 5; i++) {
@@ -57,5 +64,19 @@ public class NettyByteBuf {
             System.out.println(byteBuf2.getCharSequence(0, 6, CharsetUtil.UTF_8));
             System.out.println(byteBuf2.getCharSequence(6, 6, CharsetUtil.UTF_8));
         }
+
+        ByteBuf byteBuf3 = Unpooled.buffer(10);
+        byteBuf3.writeLong(10000);
+        System.out.println(byteBuf3);
+        int i = byteBuf3.readableBytes();
+        System.out.println(i);
+        long l = byteBuf3.readLong();
+        System.out.println(l);
+
+
+        ByteBuf byteBuf4 = Unpooled.copiedBuffer("hello,zhuge!", CharsetUtil.UTF_8);
+        byte[] bytes = new byte[byteBuf4.readableBytes()];
+        ByteBuf byteBuf1 = byteBuf4.readBytes(bytes);
+        System.out.println(byteBuf1);
     }
 }
