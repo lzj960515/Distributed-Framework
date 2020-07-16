@@ -1,5 +1,7 @@
 package com.my.netty.demo.nio;
 
+import com.my.netty.demo.netty.code.User;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
@@ -17,6 +19,9 @@ import java.util.Iterator;
  */
 public class NIOServer {
     public static void main(String[] args) throws IOException {
+        User user = new User();
+        user.setUsername("lzj");
+        user.setAge(19);
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
         //配置为非阻塞模式
         serverSocketChannel.configureBlocking(false);
@@ -24,7 +29,8 @@ public class NIOServer {
         //创建一个多路复用器selector
         Selector selector = Selector.open();
         //将ServerSocketChannel注册到selector上,并且设置selector对客户端连接感兴趣
-        serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
+        serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT,user);
+        System.out.println(serverSocketChannel.isRegistered());
         for(;;){
             System.out.println("等待事件发生....");
             //轮询selector的key,此处阻塞
@@ -33,6 +39,8 @@ public class NIOServer {
             Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
             while (iterator.hasNext()) {
                 SelectionKey selectionKey = iterator.next();
+                Object attachment = selectionKey.attachment();
+                System.out.println(attachment);
                 //删除本次已处理的key，防止下次select重复处理
                 iterator.remove();
                 handle(selectionKey);
