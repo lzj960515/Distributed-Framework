@@ -510,6 +510,9 @@ SADD key member [member ...]
        database: 0
        timeout: 5000ms
        host: 172.20.140.111
+       #集群
+       #cluster:
+         #nodes: 127.0.0.1:6379,127.0.0.1:6380,127.0.0.1:6381
        port: 6379
        password: 123456
        lettuce:
