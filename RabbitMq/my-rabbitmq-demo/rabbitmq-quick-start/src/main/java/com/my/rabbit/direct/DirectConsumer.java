@@ -3,7 +3,6 @@ package com.my.rabbit.direct;
 import com.my.rabbit.MyConnectionFactory;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.MessageProperties;
 import com.rabbitmq.client.QueueingConsumer;
 
 import java.io.IOException;

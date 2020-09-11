@@ -15,6 +15,7 @@ import java.util.concurrent.TimeoutException;
 public class MyConnectionFactory {
 
     public static Connection connection(){
+        //username 和 password 可在管理端自行创建
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("172.20.140.111");
         factory.setPort(5672);
