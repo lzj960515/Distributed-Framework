@@ -1,3 +1,5 @@
+[RabbitMQ基本概念参考文档]( http://rabbitmq.mr-ping.com/AMQP/AMQP_0-9-1_Model_Explained.html )
+
 ## 安装
 
 ### 1. 安装RabbitMq所需的环境
