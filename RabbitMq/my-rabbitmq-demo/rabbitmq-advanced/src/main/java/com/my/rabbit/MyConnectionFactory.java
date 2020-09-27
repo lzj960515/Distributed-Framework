@@ -19,6 +19,7 @@ public class MyConnectionFactory {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("172.20.140.22");
         factory.setPort(5672);
+        factory.setVirtualHost("/");
         factory.setUsername("lzj");
         factory.setPassword("123456");
         try {

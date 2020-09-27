@@ -23,6 +23,7 @@
 
     <modules>
         <module>rabbitmq-quick-start</module>
+        <module>rabbitmq-advanced</module>
     </modules>
         <dependencies>
             <dependency>
