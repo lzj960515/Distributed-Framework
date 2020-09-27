@@ -1,0 +1,11 @@
+server:
+  port: 8081
+spring:
+  rabbitmq:
+    host: 172.20.140.22
+    port: 5672
+    virtual-host: my
+    username: lzj
+    password: 123456
+    connection-timeout: 1000000
+
