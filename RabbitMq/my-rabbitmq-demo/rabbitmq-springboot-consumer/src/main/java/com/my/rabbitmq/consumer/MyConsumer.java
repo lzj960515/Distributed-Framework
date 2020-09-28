@@ -2,10 +2,12 @@ package com.my.rabbitmq.consumer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.my.rabbitmq.constant.RabbitConstant;
+import com.my.rabbitmq.domain.Order;
 import com.rabbitmq.client.Channel;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -23,9 +25,18 @@ public class MyConsumer {
     @RabbitHandler
     public void onMessage(Message message, Channel channel) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        String msg = objectMapper.readValue(message.getBody(), String.class);
-        System.out.println(msg);
+        Order order = objectMapper.readValue(message.getBody(), Order.class);
+        System.out.println(order);
         channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
     }
 
+
+    @RabbitListener(queues = {"springboot-delay-queue"})
+    @RabbitHandler
+    public void onDelayMessage(Message message, Channel channel) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Order order = objectMapper.readValue(message.getBody(), Order.class);
+        System.out.println(order);
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+    }
 }
