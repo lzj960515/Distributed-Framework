@@ -31,9 +31,18 @@ public class MyConsumer {
     }
 
 
-    @RabbitListener(queues = {"springboot-delay-queue"})
-    @RabbitHandler
+    //@RabbitListener(queues = {"springboot-delay-queue"})
+    //@RabbitHandler
     public void onDelayMessage(Message message, Channel channel) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Order order = objectMapper.readValue(message.getBody(), Order.class);
+        System.out.println(order);
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
+    }
+
+    @RabbitListener(queues = {"dead-queue"})
+    @RabbitHandler
+    public void onDeadMessage(Message message, Channel channel) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         Order order = objectMapper.readValue(message.getBody(), Order.class);
         System.out.println(order);

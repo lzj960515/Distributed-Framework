@@ -4,6 +4,7 @@ import com.my.rabbitmq.producer.MessageConfirm;
 import com.my.rabbitmq.producer.MessageReturnCallback;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration;
@@ -30,10 +31,13 @@ public class RabbitmqConfig {
                                          RabbitProperties rabbitProperties) {
         PropertyMapper map = PropertyMapper.get();
         RabbitTemplate template = new RabbitTemplate(connectionFactory);
-        MessageConverter messageConverter = messageConverterProvider.getIfUnique();
+        //设置消息转换器
+        Jackson2JsonMessageConverter jackson2JsonMessageConverter = new Jackson2JsonMessageConverter();
+        template.setMessageConverter(jackson2JsonMessageConverter);
+       /* MessageConverter messageConverter = messageConverterProvider.getIfUnique();
         if (messageConverter != null) {
             template.setMessageConverter(messageConverter);
-        }
+        }*/
         template.setMandatory(determineMandatoryFlag(rabbitProperties));
         RabbitProperties.Template properties = rabbitProperties.getTemplate();
         if (properties.getRetry().isEnabled()) {

@@ -2,11 +2,11 @@ server:
   port: 8081
 spring:
   rabbitmq:
-    host: 172.20.140.22
+    host: 8.129.54.157
     port: 5672
     virtual-host: my
-    username: lzj
-    password: 123456
+    username: liaozijian
+    password: lzj123456
     listener:
       simple:
         acknowledge-mode: manual
@@ -14,4 +14,3 @@ spring:
         max-concurrency: 10
         prefetch: 1
         default-requeue-rejected: false
-

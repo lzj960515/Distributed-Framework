@@ -17,10 +17,10 @@ public class MyConnectionFactory {
     public static Connection connection(){
         //username 和 password 可在管理端自行创建
         ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("172.20.140.22");
+        factory.setHost("8.129.54.157");
         factory.setPort(5672);
-        factory.setUsername("lzj");
-        factory.setPassword("123456");
+        factory.setUsername("liaozijian");
+        factory.setPassword("lzj123456");
         try {
             return factory.newConnection();
         } catch (IOException | TimeoutException e) {

@@ -27,9 +27,10 @@ public class QuickStartConsumer {
          * exclusive: 是否独占，为true表示该队列只能有一个消费者消费，若有第二个消费者再次声明，将会抛出异常
          *      为false时可以有多个消费者一起消费，每条消息只能由一个消费者消费，默认是轮询的方式，一个消费者一条
          *      注意：开启此参数后(true)，消费者断开队列将自动删除，durable的效果被无效
+         *
          * autoDelete:是否自动删除，为true表示当最后一个消费者连接断开之后自动删除，durable的效果被无效
          */
-        channel.queueDeclare(QUEUE_NAME, true, false, true, null);
+        channel.queueDeclare(QUEUE_NAME, true, true, false, null);
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
         QueueingConsumer queueingConsumer = new QueueingConsumer(channel);
         channel.basicConsume(QUEUE_NAME,true,queueingConsumer);

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeoutException;
  */
 public class QuickStartProducer {
 
-    static String QUEUE_NAME = "hello1";
+    static String QUEUE_NAME = "hello2";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         Connection connection = MyConnectionFactory.connection();

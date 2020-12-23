@@ -54,7 +54,7 @@ public class MyProducer implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         //设置消息转换器
-        Jackson2JsonMessageConverter jackson2JsonMessageConverter = new Jackson2JsonMessageConverter();
-        rabbitTemplate.setMessageConverter(jackson2JsonMessageConverter);
+        /*Jackson2JsonMessageConverter jackson2JsonMessageConverter = new Jackson2JsonMessageConverter();
+        rabbitTemplate.setMessageConverter(jackson2JsonMessageConverter);*/
     }
 }

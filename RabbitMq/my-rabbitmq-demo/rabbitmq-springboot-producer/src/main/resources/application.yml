@@ -2,11 +2,11 @@ server:
   port: 8082
 spring:
   rabbitmq:
-    host: 172.20.140.22
+    host: 8.129.54.157
     port: 5672
     virtual-host: my
-    username: lzj
-    password: 123456
+    username: liaozijian
+    password: lzj123456
     connection-timeout: 1000000
     #开启消息确认模式
     publisher-confirms: true
