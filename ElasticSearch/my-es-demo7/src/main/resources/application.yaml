@@ -1,0 +1,16 @@
+spring:
+  elasticsearch:
+    rest:
+      uris:
+        - 192.168.65.206:9200
+#        - 122.9.35.11:19200
+#        - 122.9.35.11:19300
+#        - 122.9.35.11:19400
+#      username: elastic
+#      password: kqinfo@elastic*2021
+
+logging:
+  level:
+    org.springframework.data.elasticsearch.core: DEBUG
+    org.elasticsearch.client: TRACE
+    org.apache.http: TRACE

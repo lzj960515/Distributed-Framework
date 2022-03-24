@@ -1,0 +1,18 @@
+server:
+  port: 8082
+spring:
+  rabbitmq:
+    host: 119.3.207.134
+    port: 10072
+    virtual-host: my_vhost
+    username: admin
+    password: parsec0326
+    connection-timeout: 1000000
+    #开启消息确认模式
+    publisher-confirms: true
+    #开启消息可达监听
+    publisher-returns: true
+    #开启不可达消息不会被mq删除，会回调监听方法
+    template:
+      mandatory: true
+

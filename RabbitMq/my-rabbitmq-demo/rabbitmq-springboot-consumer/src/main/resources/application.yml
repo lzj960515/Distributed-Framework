@@ -1,0 +1,17 @@
+server:
+  port: 8081
+spring:
+  rabbitmq:
+    host: 119.3.207.134
+    port: 10072
+    virtual-host: my_vhost
+    username: admin
+    password: parsec0326
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 5
+        max-concurrency: 10
+        prefetch: 1
+        default-requeue-rejected: false
+queue-name: springboot-queue

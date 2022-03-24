@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: quick-start
+  redis:
+    database: 0
+    timeout: 5000ms
+    #host: 172.20.140.111
+    #集群
+    cluster:
+      nodes: 172.20.140.111:16379,172.20.140.111:16380,172.20.140.111:26381,172.20.140.111:26382,172.20.140.111:36379,172.20.140.111:36380
+    #port: 6379
+    password: 123456
+    lettuce:
+      pool:
+        min-idle: 10
+        max-idle: 50
+        max-active: 100
+        max-wait: 5000ms
+

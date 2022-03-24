@@ -1,0 +1,32 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: my-es-demo
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://101.200.194.165:23306/db_test?serverTimezone=Asia/Shanghai&useLegacyDatetimeCode=false&nullNamePatternMatchesAll=true&zeroDateTimeBehavior=CONVERT_TO_NULL&tinyInt1isBit=false&autoReconnect=true&useSSL=false&pinGlobalTxToPhysicalConnection=true&characterEncoding=utf8
+    username: root
+    password: Wid3kdo3DI!,dser
+    hikari:
+      minimum-idle: 5
+      idle-timeout: 600000
+      maximum-pool-size: 20
+      auto-commit: true
+      pool-name: MyHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+  data:
+    elasticsearch:
+      client:
+        reactive:
+          username: xujiahong
+          password: xujiahong666
+          endpoints:
+            - 122.9.35.11:19200
+            - 122.9.35.11:19300
+            - 122.9.35.11:19400
